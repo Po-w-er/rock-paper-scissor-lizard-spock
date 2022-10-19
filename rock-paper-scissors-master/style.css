@@ -1,0 +1,632 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap');
+*{
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    
+    row-gap: 70px;
+    align-items: center;
+    justify-content: center;
+    background:  hsl(214, 47%, 23%);
+    color: white;
+    
+
+}
+
+h1{
+    font-size: 23px;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: -10px;
+    padding: 0;
+}
+.score-container{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: center;
+    padding: 2rem;
+    width: 600px;
+    height: 145px;
+    border: 3px solid  hsl(217, 16%, 45%);
+    border-radius: 9px;
+   
+   
+}
+
+.score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px ;
+    width: 130px;
+    height: 108px;
+    color: hsl(217, 16%, 45%);
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+} 
+
+  
+
+.game{
+    width: 170px;
+    height: 108px;
+ 
+}
+.score-text{
+     color:  hsl(229, 64%, 46%) ;
+     margin-top: 2px;
+     text-align: center;
+     font-weight: 600;
+     font-size: medium;
+}
+.count{
+    text-align: center;
+    color:  hsl(229, 25%, 31%);
+    margin-top: -29px;
+    font-size: 70px; 
+}
+
+
+.pentagon{
+    position: relative;
+    margin-top: 32px;
+    width: 315px;
+    
+        
+}
+
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn1{
+    position: absolute;
+    top: -50px;
+    left: 110px;
+   
+}
+.btn2{
+    position: absolute;
+    top: 60px;
+    left: -50px;
+
+}
+
+.btn3{
+    position: absolute;
+    right: -50px;
+    top: 50px;
+
+}
+.btn4{
+    position: absolute;
+    left:-15px ;
+    bottom: -15px;
+}
+.btn5{
+    position: absolute;
+    right: 1px;
+    bottom: -15px;
+}
+.scissor, .spock, .paper, .lizard, .rock{
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    border-radius: 50%;
+    border: 15px solid hsl(39, 89%, 49%);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.scissor:active, .spock:active, .paper:active, .lizard:active, .rock:active {
+    transform: scale(0.98);
+    border-color:  hsl(40, 84%, 53%);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+.spock{
+    border-color:  hsl(189, 59%, 53%) ; 
+   
+}
+.spock:active{
+    border-color:  hsl(189, 58%, 57%);
+}
+
+.paper{
+
+    border-color: hsl(230, 89%, 62%) ;
+}
+
+.paper:active{
+    border-color: hsl(230, 89%, 65%);
+}
+
+.lizard{
+    border-color:  hsl(261, 73%, 60%);
+}
+
+.lizard:active{
+    border-color: hsl(261, 72%, 63%);
+}
+
+.rock{
+    border-color: hsl(349, 71%, 52%) ;
+}
+
+.rock:active{
+    border-color: hsl(349, 70%, 56%);
+}
+
+.scissor-svg, .spock-svg, .lizard-svg, .paper-svg, .rock-svg{
+    transform: scale(0.8);
+}
+
+
+.rules{
+    position: absolute;
+    right: 15px;
+    bottom: 25px;
+    
+}
+
+
+.rules button{
+    background: transparent;
+    border: 1.5px solid hsl(217, 16%, 45%);
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 8px ;
+    font-weight: 600;
+    color: white;
+}
+
+.rules button:active{
+    transform: scale(0.95);
+}
+
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    visibility: hidden; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+.add{
+    visibility: visible;
+}
+
+.instructions{
+    color: hsl(229, 25%, 31%);
+     background-color: white;
+     height: 600;
+     border-radius: 10px ;
+}
+
+
+
+.instructions img{
+     transform: scale(0.75);
+}
+.head{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+.rule-text{
+    margin-left: 15px;
+}
+
+.close-btn{
+    background: transparent;
+    border: none;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.close-btn:active{
+    transform: scale(0.8);
+}
+
+
+
+
+.played-container{
+     text-align: center;
+     height: 300px;
+     width: 600px;
+     
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+    
+}
+
+
+.userBtn h1, .playerBtn h1{
+    font-weight: 200;
+    font-size: x-large;
+}
+.userBtn,.playerBtn{
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+}
+
+
+/* to hide any one of the sections */
+.hide{
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+}
+   
+
+/* to make the button larger */
+.large{
+    width: 200px;
+    height: 200px;
+    border-width: 30px;
+}
+
+
+.play-again{
+   padding-top:100px ;
+  
+}
+.play-again h1{
+    font-size: xx-large;
+    margin: 10px;
+    
+}
+
+.play-again-btn{
+    margin-top: 100px;
+    margin: 0;
+    background: white;
+    border: none;
+    padding: .5rem 3rem;
+    border-radius: 5px;
+    font-weight:600;
+    color: hsl(229, 64%, 46%);
+}
+
+@media(max-width: 950px){
+    .rules{
+        bottom: -45px;
+        
+    } 
+    .rules button{
+        margin-right: 370px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media(max-width: 725px){
+    .rules{
+        bottom: -45px;
+        
+    } 
+    .score-container{
+        width: 500px;
+    }
+
+    .rules button{
+        margin-right: 240px;
+        margin-bottom: 20px;
+    }
+
+    .userBtn h1, .playerBtn h1{
+        font-weight: 400;
+        font-size: large;
+     }
+
+     .played-container{
+        margin-left: -100px;
+        width: 300px;
+        column-gap: 50px;
+    }
+
+    .large{
+        width: 150px;
+        height: 150px;
+    }
+
+    
+}
+
+@media(max-width: 620px){
+    .rules{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    } 
+    .score-container{
+        width: 400px;
+    }
+    .pent-svg{
+        transform: scale(0.8);
+    }
+
+    .scissor-svg, .spock-svg, .lizard-svg, .paper-svg, .rock-svg{
+        transform: scale(0.98);
+    }
+
+    .scissor, .spock, .paper, .lizard, .rock{
+       transform: scale(0.6);
+    }
+
+    .btn1{
+        top: -15px;
+    }
+    .btn2{
+        top: 80px;
+       left: -10px;
+    }
+
+    .btn3{
+        top: 80px;
+        right: -15px;
+     }
+     .btn4{
+       
+        left: 28px;
+     }
+     .btn5{
+       
+        right: 20px;
+     }
+    .pentagon{
+        margin-top: -30px;
+    }
+    
+    
+
+    .played-container{
+        margin-left: -140px;
+        width: 400px;
+        column-gap: 0px;
+    }
+
+    .play-again{
+        padding-top:100px ;
+        
+     }
+     .play-again h1{
+         font-size: medium;
+     }
+     
+     .play-again-btn{
+         margin-top: 100px;
+         margin: 0;
+         background: white;
+         border: none;
+         padding: .3rem 2rem;
+         border-radius: 5px;
+         font-weight:600;
+         color: hsl(229, 64%, 46%);
+     }
+
+     .large{
+        width: 250px;
+        height: 250px;
+     }
+     
+}
+
+@media(max-width: 529px){
+    .played-container{
+        margin-left:-110px ;
+        width: 300px;
+        column-gap: 0px;
+    }
+
+    .userBtn h1, .playerBtn h1{
+        font-weight: 200;
+        font-size: medium;
+     }
+
+     .userBtn,.playerBtn{
+        row-gap: 50px;
+
+     }
+     .playerBtn{
+        margin-left: -20px;
+     }
+     .play-again {
+       
+        margin-left: -30px;
+    }
+
+    .rules button{
+         margin-right: 165px;
+        margin-bottom: 60px;
+    }
+    
+}
+
+@media(max-width: 395px){
+    .logo{
+        transform: scale(0.8);
+        margin-left: -30px;
+    }
+
+    .count{
+        font-size: 50px;
+       
+    }
+    .rules{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    } 
+    
+    .score-container{
+        margin-left: 15px;
+        width: 320px;
+        height: 120px;
+       
+    }
+    .score{
+            height: 80px;
+            width: 100px;
+    }
+    .pent-svg{
+        transform: scale(0.8);
+    }
+
+    .scissor-svg, .spock-svg, .lizard-svg, .paper-svg, .rock-svg{
+        transform: scale(0.98);
+    }
+
+    .scissor, .spock, .paper, .lizard, .rock{
+       transform: scale(0.6);
+    }
+
+    .btn1{
+        top: -15px;
+    }
+    .btn2{
+        top: 80px;
+       left: -10px;
+    }
+
+    .btn3{
+        top: 80px;
+        right: -15px;
+     }
+     .btn4{
+       
+        left: 28px;
+     }
+     .btn5{
+       
+        right: 20px;
+     }
+    .pentagon{
+        margin-top: -30px;
+    }
+    .rules{
+        right: 100px;
+       
+    }
+    .instructions{
+         height: 700px;
+         width: 400px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+    }
+
+    .instructions img{
+        margin-right: 10px;
+        transform: scale(0.7);
+   }
+   
+   .rule-text{
+       margin-left: -10px;
+       margin-top: -50px;
+   }
+   
+   .close-btn{
+       background: transparent;
+       border: none;
+       position: absolute;
+       bottom: 80px;
+       
+       left: 0 ;
+       right: 0;
+   }
+   
+   .close-btn:active{
+       transform: scale(0.8);
+   }
+   
+    .played-container{
+        text-align: center;
+        height: 300px;
+        width: 100px;
+        flex-wrap: nowrap;
+        margin-top: -100px;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .userBtn h1, .playerBtn h1{
+    font-weight: 200;
+    font-size: small;
+    margin-top: -50px;
+    }
+    .userBtn,.playerBtn{
+    display: flex;
+    flex-direction: column-reverse;
+    
+    }
+
+    .userBtn{
+        margin-left: 70px;
+    }
+
+    .playerBtn{
+        margin-left: -80px;
+    }
+
+    .play-again{
+        visibility: visible;
+        order: 3;
+        margin-top: 18em ;
+        margin-left:-18em ;
+    }
+    .play-again h1{
+    font-size:large;
+    margin: 10px;
+    
+    }
+
+    .play-again-btn{
+    margin-top: 100px;
+    margin: 0;
+    background: white;
+    border: none;
+    padding: .5rem 3rem;
+    border-radius: 5px;
+    font-weight:600;
+    color: hsl(229, 64%, 46%);
+    }
+
+    .rules button{
+    margin-right: 20px;
+    margin-bottom: 20px;
+    }
+    
+    
+   
+}
